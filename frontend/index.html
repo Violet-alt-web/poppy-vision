@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>罂粟智能识别</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="page">
+    <header class="page-header">
+      <h1 class="page-title">罂粟智能识别</h1>
+      <p class="page-subtitle">上传图片，识别植物是否为罂粟</p>
+      <button type="button" id="shareButton" class="share-button" title="分享功能将在后续阶段实现">
+        <span class="share-icon" aria-hidden="true">↗</span>
+        分享
+      </button>
+    </header>
+
+    <section class="card upload-card" aria-labelledby="uploadTitle">
+      <h2 class="card-title" id="uploadTitle">选择图片</h2>
+      <p class="card-desc">仅支持图片文件（JPG / PNG / WebP 等）</p>
+      <input type="file" id="imageInput" accept="image/*" hidden>
+      <button type="button" id="selectImageButton" class="button button-secondary">选择图片</button>
+    </section>
+
+    <section class="card preview-card" aria-labelledby="previewTitle">
+      <h2 class="card-title" id="previewTitle">图片预览</h2>
+      <div id="previewArea" class="preview-area">
+        <div id="previewEmpty" class="preview-empty">
+          <span class="preview-empty-icon" aria-hidden="true">🖼️</span>
+          <p>尚未选择图片</p>
+        </div>
+        <img id="previewImage" class="preview-image" alt="待识别图片" hidden>
+      </div>
+    </section>
+
+    <div class="action-area">
+      <button type="button" id="startButton" class="button button-primary" disabled>开始识别</button>
+    </div>
+
+    <section class="card result-card" aria-labelledby="resultTitle">
+      <h2 class="card-title" id="resultTitle">识别结果</h2>
+      <dl class="result-list">
+        <div class="result-row">
+          <dt>识别结果</dt>
+          <dd id="resultLabel">--</dd>
+        </div>
+        <div class="result-row">
+          <dt>类别</dt>
+          <dd id="resultClass">--</dd>
+        </div>
+        <div class="result-row">
+          <dt>置信度</dt>
+          <dd id="resultConfidence">--</dd>
+        </div>
+      </dl>
+    </section>
+
+    <div id="loadingArea" class="status-area loading-area" hidden>
+      <span class="spinner" aria-hidden="true"></span>
+      <p>正在识别，请稍候...</p>
+    </div>
+
+    <div id="errorArea" class="status-area error-area" role="alert" hidden>
+      <p id="errorMessage">识别失败，请稍后重试。</p>
+    </div>
+
+    <footer class="page-footer">
+      <p>Poppy Vision · 第一版页面骨架</p>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
